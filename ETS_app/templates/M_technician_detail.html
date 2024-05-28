@@ -1,0 +1,70 @@
+{% extends "M_base.html" %}
+
+{% block title %} Technician detail {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="box">
+            <div class="image">
+                {% if technician.image %}
+                <img src="{{technician.image.url}}" />
+                {% endif %}
+            </div>
+            <div class="detail">
+                <label>ID</label>
+                <p>{{technician.id}}</p>
+            </div>
+            <div class="detail">
+                <label>Name</label>
+                <p>{{technician.full_name}}</p>
+            </div>
+            <div class="detail">
+                <label>Email</label>
+                <p>{{technician.email}}</p>
+            </div>
+            <div class="detail">
+                <label>Phone</label>
+                <p>{{technician.phone}}</p>
+            </div>
+            <div class="detail">
+                <label>Birthday</label>
+                <p>{{technician.birth}}</p>
+            </div>
+            <div class="detail">
+                <label>Gender</label>
+                <p>{{technician.gender.name}}</p>
+            </div>
+            <div class="detail">
+                <label>NRC</label>
+                <p>{{technician.nrc}}</p>
+            </div>
+            <div class="detail">
+                <label>Occupation</label>
+                <p>{{technician.occupation}}</p>
+            </div>
+            <div class="detail">
+                <label>Qualification</label>
+                <p>{{technician.qualification}}</p>
+            </div>
+            <div class="detail">
+                <label>Create Date</label>
+                <p>{{technician.create_at}}</p>
+            </div>
+            {% if technician.status == True %}
+            <div class="button">
+                <a href="/ets/m_technician/list"><button>Go Back</button></a>
+            </div>
+            {% else %}
+            <div class="button">
+                <a href="/ets/m_technician/register/list"><button>Go Back</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

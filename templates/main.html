@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Roles</title>
+        <link rel="stylesheet" href="{% static 'css/main_style.css' %}"/>
+    </head>
+    <body>
+        <div class="name">
+            <h1>Select Your Role</h1>
+        </div>
+        <div class="role_card_list">
+            <a href="/m_main/">
+                <div class="role_card">
+                    <img src="{% static 'images/M_icon.jpg' %}" alt="">
+                    <h2>Employee</h2>
+                </div>
+            </a>
+            <a href="/t_main/">
+                <div class="role_card">
+                    <img src="{% static 'images/T_icon.png' %}" alt="">
+                    <h2>Technician</h2>
+                </div>
+            </a>
+            <a href="/c_login/">
+                <div class="role_card">
+                    <img src="{% static 'images/C_icon.png' %}" alt="">
+                    <h2>Customer</h2>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

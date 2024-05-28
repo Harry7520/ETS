@@ -1,0 +1,183 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background:url("/static/images/p1.jpg/") no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position:center;
+}
+
+.area{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:200px;
+}
+
+.login{
+    width:350px;
+    height:450px;
+    background:transparent;
+    border:2px solid rgb(55, 52, 52);
+    box-shadow:0 0 20px rgb(0, 0, 0, .2);
+    border-radius:10px;
+    backdrop-filter: blur(20px); 
+}
+
+form{
+    padding-top:50px;
+}
+
+.login-title{
+    display:flex;
+    justify-content:center;
+    padding-bottom:25px;
+}
+
+.login-title > h2{
+    color:black;
+    font-size:50px;
+    font-weight:bold;
+}
+
+input,button{
+    border:none;
+    outline:none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.login-content{
+    display:grid;
+    row-gap:1.75rem;
+    margin-bottom:1.5rem;
+}
+
+.login-box{
+    display:grid;
+    grid-template-columns:max-content 1fr;
+    align-items:center;
+    column-gap: .75rem;
+    border-bottom: 4px solid white;
+}
+
+.hello1{
+    position:relative;
+    margin-inline:1.5rem;
+    padding:1rem 1.5rem;
+}
+
+.login_eye{
+    color:white;
+    font-size:1.25rem;
+    position:absolute;
+    right:0;
+    top:10px;
+    z-index: 10;
+    cursor:pointer;
+}
+
+.remix{
+    font-size:1.5rem;
+}
+
+.input{
+    width:100%;
+    padding-block:.8rem;
+    background:none;
+    color:black;
+    font-size: 1rem;
+    font-weight:bolder;
+    position:relative;
+    z-index: 1;
+}
+
+.input-box{
+    position:relative;
+}
+
+.label{
+    position:absolute;
+    left:0;
+    top:13px;
+    transition:top .3s,font-size .3s;
+}
+
+.login-box:nth-child(2) input{
+    padding-right:2rem;
+}
+
+.other,.check{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.other{
+    margin-bottom:1.5rem;
+}
+
+.check-label,.forgot{
+    color:black;
+    font-size:14px;
+}
+
+.check{
+    column-gap:.5rem;
+}
+
+.check-input{
+    cursor:pointer;
+    width:16px;
+    height:16px;
+}
+
+.forgot{
+    color:black;
+}
+
+.forgot:hover{
+    color:white;
+}
+
+.btn{
+    width:100%;
+    padding:1rem;
+    color:white;
+    border-radius:.5rem;
+    background-color: black;
+    font-weight:bolder ;
+    cursor:pointer;
+    margin-bottom:2rem;
+}
+
+.input:focus + .label{
+    top:-12px;
+    font-size: small;
+}
+
+.input:not(:placeholder-shown).input:not(:focus) + .label{
+    top:-12px;
+    font-size: small;
+}
+
+.reg{
+    color:white;
+    text-align:center;
+}
+
+.reg > a{
+    color:white;
+    font-weight: normal;
+}
+
+.reg > a:hover{
+    text-decoration: underline;
+}

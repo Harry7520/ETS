@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- message.css -->
+    <link rel="stylesheet" href="{% static 'css/message.css' %}"/>
+    <!-- nav.css -->
+    <link rel="stylesheet" href="{% static 'css/C_N.css' %}"/>
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div class="grid-container">
+        {% include "C_nav.html" %}
+        {% include "C_sidebar.html" %}
+        {% block body %}{% endblock%}
+        <div id="popup" class="popup-container">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="profile-box">
+                    {% csrf_token %}
+                    {% if customer.image %}
+                    <p>File uploaded at: <a href="{{customer.image.url}}">{{customer.image}}</a></p>
+                    <img src={{customer.image.url}} style="width:100px;height:100px;border:1px solid black;border-radius:50%;" />
+                    {% else %}
+                    <img src="{% static 'images/C_profile.jpg'%}" alt="" style="width:100px;height:100px;border:1px solid black;border-radius:50%;">
+                    {% endif %}
+                    <br><br>
+                    <div class="profile-box-input">
+                    <input type="file" name="image" required/>
+                    </div>
+                    <div class="profile-btn">
+                    <button class="button" type="submit" onclick="hidePopup()">Upload</button>
+                </div>
+                </div>
+            </form>
+            <center>
+                <div class="profile-btn1">
+                    <a href="/ets/c_home"><button class="button" onclick="hidePopup()">Cancel</button></a>
+                </div>
+            </center>
+        </div>
+    
+        <div id="overlay" class="overlay"></div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script type="text/javascript">
+         function showPopup() {
+        // Display the popup
+        document.getElementById('popup').style.display = 'block';
+        
+        // Display the overlay
+        document.getElementById('overlay').style.display = 'block';
+        
+        // Store the popup state in session storage
+        sessionStorage.setItem('popupVisible', 'true');
+    }
+    
+    function hidePopup() {
+        // Hide the popup
+        document.getElementById('popup').style.display = 'none';
+        
+        // Hide the overlay
+        document.getElementById('overlay').style.display = 'none';
+        
+        // Remove the popup state from session storage
+        sessionStorage.removeItem('popupVisible');
+    }
+
+    // Check if the popup should be shown when the page loads
+    window.onload = function() {
+        var popupVisible = sessionStorage.getItem('popupVisible');
+        if (popupVisible === 'true') {
+            showPopup();
+        } else {
+            hidePopup();
+        }
+    };
+        </script>
+</body>
+</html>

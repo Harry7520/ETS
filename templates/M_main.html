@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login OR Register</title>
+        <link rel="stylesheet" href="{% static 'css/main_style.css' %}"/>
+    </head>
+    <body>
+        <div class="name">
+            <h1>Employee {{ m_user.status }}</h1>
+        </div>
+        <div class="role_card_list">
+            <a href="/m_login/">
+                <div class="role_card">
+                    <img src="{% static 'images/login_icon.jpg' %}" alt="">
+                    <h2>Login</h2>
+                </div>
+            </a>
+            <a href="/m_register/">
+                <div class="role_card">
+                    <img src="{% static 'images/register_icon.png' %}" alt="">
+                    <h2>Register</h2>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

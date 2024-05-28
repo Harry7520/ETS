@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+        
+		<div class="profile">
+            {% if c_user.image %}
+            <a href="/ets/c_profile/edit/{{c_user.id}}"><img src="{{c_user.image.url}}"></a>
+            {% else %}
+            <a href="/ets/c_profile/edit/{{c_user.id}}"><img src="{% static 'images/C_profile.jpg'%}"></a>
+            {% endif %}
+            <h3>{{c_user.name}}</h3>
+            <p>{{c_user.email}}</p>
+        </div>
+
+        <div class="menu">
+            <div class="item"><a href="/ets/c_home/"><span class="material-icons-outlined">home</span>Home</a></div>
+            <div class="item"><a href="/ets/c_service/category/view/"><span class="material-icons-outlined">home_repair_service</span>Services</a></div>
+            <div class="item"><a href="/ets/c_technician"><span class="material-icons-outlined">group</span>Technicians</a></div>
+            <div class="item"><a href="/ets/c_order/list/{{c_user.email}}"><span class="material-icons-outlined">list_alt</span>Order Services</a></div>
+            <div class="item"><a href="/ets/c_review/create"><span class="material-icons-outlined">help_center</span>Review</a></div>
+            <div class="item"><a href="/c_logout/"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+            <div class="item"><a href="/ets/c_account/delete/{{c_user.email}}"><span class="material-icons-outlined">bin</span>Delete</a></div>
+        </div>
+       </aside>
+      <!-- End Sidebar -->
+    </body>
+</html>

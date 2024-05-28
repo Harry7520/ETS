@@ -1,0 +1,88 @@
+.home {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.home-header {
+    margin-bottom: 2.5rem;
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+}
+
+.home-header img {
+    width:5rem;
+    height:5rem;
+    border-radius:50%;
+}
+
+.home-header h1 {
+    font-size: 24px;
+    margin-top:1.5rem;
+}
+
+.home-about {
+    display:flex;
+    margin-bottom: 1.5rem;
+}
+
+.home-about img {
+    margin-right:3rem;
+    width:15rem;
+    height:20rem;
+    border-radius:1rem;
+}
+
+.home-about p {
+    line-height: 1.6;
+}
+
+.home-sponsor {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.img-box {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap:15rem;
+    row-gap: 1rem;
+}
+
+.img-card {
+    text-align: center;
+    margin-bottom: 20px;
+    display:flex;
+    gap:2rem;
+}
+
+.img-card img {
+    max-width: 100px;
+    max-height: 100px;
+    border:1px solid black;
+    border-radius:2rem;
+}
+
+.img-card h3{
+    margin-top:2.5rem;
+}
+
+.home-contacts {
+    margin-bottom: 20px;
+    margin-top:2.5rem;
+}
+
+.home-contacts p {
+    margin-bottom: 10px;
+}
+
+.home-contacts a {
+    color: blue;
+    text-decoration: none;
+}
+
+.title > h2 {
+    text-align:center;
+    margin-bottom:20px;
+}

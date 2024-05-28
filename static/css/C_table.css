@@ -1,0 +1,210 @@
+.table-list-box-size{
+    padding:25px 50px;
+}
+
+.table-list-box{
+    width:98%;
+    height:auto;
+    margin:0 auto;
+    background:#e2e2e2;
+    border:1px solid black;
+    border-radius:0.5rem;
+    padding:30px;
+}
+
+.table-list-box header{
+    font-size:30px;
+    font-weight:bolder;
+    color:#333;
+}
+
+.table-list-box > form{
+    position:relative;
+    min-height: 490px;
+    margin-top: 16px;
+    background:transparent;
+}
+
+.table-list-box > form > .detail{
+    margin-top:10px;
+}
+
+.table-list-box > form > .detail > .field{
+    display:flex;
+    align-items:center;
+    justify-content:left;
+    gap:20px;
+}
+
+.table-list-box > form > .detail > .field1{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+}
+
+.table-list-box > form > .detail > .field2{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    margin-top:10px;
+}
+
+.table-list-box > form > .detail > .field > .input-field,.container > form > .detail > .field1 > .input-field{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% / 3 - 5px);
+    margin:4px 0;
+}
+
+.table-list-box > form > .detail > .field1 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}
+
+.table-list-box > form > .detail > .field2 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}
+
+.input-field > label,.input-field1 > label,.field2 >.input-field > label{
+    font-size:20px;
+    font-weight:bold;
+    color:#2e2e2e;
+}
+
+.input-field > input{
+    padding:0 15px;
+    outline:none;
+    border:1px solid #aaa;
+    border-radius:5px;
+    color:#333;
+    font-size:14px;
+    font-weight:400;
+    height:42px;
+    margin:8px 0;
+}
+
+.input-field1 > textarea{
+    padding:10px 15px;
+    outline:none;
+    border:1px solid #aaa;
+    border-radius:5px;
+    color:#333;
+    font-size:14px;
+    font-weight:400;
+    height:5rem;
+    margin:8px 0;
+    resize:none;
+}
+
+.select-field > select{
+    font-size:15px;
+    padding:0 15px 0 7.5px;
+    margin-top:0.5rem;
+}
+
+.select-field{
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    margin:4px 3rem 4px 0;
+}
+
+.select-field >label{
+    font-size:20px;
+    font-weight:bold;
+    color:#2e2e2e;
+}
+
+.btn-box{
+    display:flex;
+    justify-content:center;
+    margin-top:1rem;
+}
+
+.btn-box > .btn{
+    width:15rem;
+    height:3rem;
+    color:white;
+    background:black;
+    border-radius:1rem;
+    border:1px solid black;
+    transition:0.5s;
+}
+
+.btn-box > .btn:hover{
+    transform:scale(1.2);
+    background:purple;
+    box-shadow:0.4rem 0.4rem 0.5rem 0.5rem rgba(0,0,0,0.5);
+}
+
+.table-list-box2{
+    margin:5rem auto 0 auto;
+    padding:30px 40px;
+    width:50%;
+    height:400px;
+    background:#e2e2e2;
+    border-radius:0.5rem;
+}
+
+.table-list-box2 header{
+    font-size:30px;
+    font-weight:bolder;
+    color:#333;
+}
+
+.table-list-box2 > form{
+    position:relative;
+    min-height: 490px;
+    margin-top: 16px;
+    background:transparent;
+}
+
+.table-list-box2 > form > .detail{
+    margin-top:10px;
+}
+
+.table-list-box2 > form > .detail > .field{
+    display:flex;
+    align-items:center;
+    justify-content:left;
+    gap:20px;
+}
+
+.table-list-box2 > form > .detail > .field1{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+}
+
+.table-list-box2 > form > .detail > .field2{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    margin-top:10px;
+}
+
+.table-list-box2 > form > .detail > .field > .input-field,.container > form > .detail > .field1 > .input-field{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% / 3 - 5px);
+    margin:4px 0;
+}
+
+.table-list-box2 > form > .detail > .field1 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}
+
+.table-list-box2 > form > .detail > .field2 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}

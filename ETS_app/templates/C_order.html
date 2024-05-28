@@ -1,0 +1,91 @@
+{% extends "C_base.html" %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/C_table.css' %}" />
+
+<div class="main-container">
+    <div class="table-list-box-size">
+        <div class="table-list-box">
+            <header>Order</header>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="detail">
+                    <div class="field">
+                        <div class="input-field">
+                            <label>Service</label>
+                            <input type="text" name="service" value="{{service.name}}" readonly/>
+                        </div>
+                        <div class="input-field">
+                            <label>Price</label>
+                            <input type="text" name="price" value="{{service.price}}" readonly/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="input-field">
+                            <label>Technician Name</label>
+                            <input type="text" name="t_name" value="{{technician.full_name}}" readonly/>
+                        </div>
+                        <div class="input-field">
+                            <label>Technician Email</label>
+                            <input type="email" name="t_email" value="{{technician.email}}" readonly/>
+                        </div>
+                        <div class="input-field">
+                            <label>Technician Phone</label>
+                            <input type="text" name="t_phone" value="{{technician.phone}}" readonly/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="input-field">
+                            <label>Fill Your Name</label>
+                            <input type="text" name="c_name" placeholder="Enter your name" required/>
+                        </div>
+                        <div class="input-field">
+                            <label>Your Email</label>
+                            <input type="email" name="c_email" value="{{c_user.email}}" readonly/>
+                        </div>
+                        <div class="input-field">
+                            <label>Fill Your Phone</label>
+                            <input type="text" name="c_phone" placeholder="Enter your phone-number" required/>
+                        </div>
+                    </div>
+                    <div class="field1">
+                        <div class="input-field">
+                            <label>Fill Order date</label>
+                            <input type="date" name="order_date" id="date" required/>
+                        </div>
+                    </div>
+                    <div class="field2">
+                        <div class="input-field1">
+                            <label>Fill Your Adress</label>
+                            <textarea name="c_address" placeholder="Enter your adress" required></textarea>
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="btn">Order</button>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    const today = new Date();
+                    today.setDate(today.getDate() + 1); // Get tomorrow's date
+                    const minDate = today.toISOString().split('T')[0];
+                    
+                    const maxDate = new Date(today);
+                    maxDate.setDate(maxDate.getDate() + 3); // Get the date 3 days from tomorrow
+                    
+                    const maxDateStr = maxDate.toISOString().split('T')[0];
+                    
+                    document.getElementById('date').setAttribute('min', minDate);
+                    document.getElementById('date').removeAttribute('max');
+                </script>
+                
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

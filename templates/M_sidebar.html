@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="sidebar">
+            <div class="sidebar-title">
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+            <div class="profile">
+                {% if m_user %}
+                    {% if m_user.image %}
+                    <img src="{{m_user.image.url}}">
+                    {% endif %}
+                    <h3>{{m_user.name}}</h3>
+                    <p>{{m_user.occupation.name}}</p>
+                {% else %}
+                    <img src="{% static 'images/admin.png'%}">
+                    <h3>{{user.username}}</h3>
+                    <p>Admin</p>
+                {% endif %}
+            </div>
+    
+            <div class="menu">
+                {% if user.is_superuser%}
+                <div class="item"><a href="/ets/m_dashboard"><span class="material-icons-outlined">home</span>Dashboard</a></div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">category</span>Categories
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_service/category" class="sub-item"><span class="material-icons-outlined">category</span>Services Category</a>
+                        <a href="/ets/m_technician/occupation" class="sub-item"><span class="material-icons-outlined">category</span>Technician Ocp</a>
+                    </div>
+                </div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">home_repair_service</span>Services
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_service/add" class="sub-item"><span class="material-icons-outlined">note_add</span>Services Add</a>
+                        <a href="/ets/m_service/list" class="sub-item"><span class="material-icons-outlined">description</span>Service Lists</a>
+                    </div>
+                </div>
+                <div class="item"><a href="/ets/m_order/list"><span class="material-icons-outlined">list_alt</span>Orders</a></div>
+                <div class="item"><a href="/ets/m_customer/list"><span class="material-icons-outlined">people</span>Customer Lists</a></div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">groups</span>Technicians
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_technician/list" class="sub-item"><span class="material-icons-outlined">fact_check</span>Technician Lists</a>
+                        <a href="/ets/m_technician/register/list" class="sub-item"><span class="material-icons-outlined">person_add_alt</span>Technician Register</a>
+                    </div>
+                </div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">groups</span>Employees
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_employee/list" class="sub-item"><span class="material-icons-outlined">fact_check</span>Employee Lists</a>
+                        <a href="/ets/m_employee/register/list" class="sub-item"><span class="material-icons-outlined">person_add_alt</span>Employee Register</a>
+                    </div>
+                </div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">support_agent</span>Review Messages
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_technician/review" class="sub-item"><span class="material-icons-outlined">reviews</span>Technician Review</a>
+                        <a href="/ets/m_customer/review" class="sub-item"><span class="material-icons-outlined">reviews</span>Customer Review</a>
+                    </div>
+                </div>
+                <div class="item"><a href="/m_logout"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+                {% endif %}
+
+                {% if m_user.occupation.name == "Manager" %}
+                <div class="item"><a href="/ets/m_dashboard"><span class="material-icons-outlined">home</span>Dashboard</a></div>
+                <div class="item"><a href="/ets/m_order/list"><span class="material-icons-outlined">list_alt</span>Orders</a></div>
+                <div class="item"><a href="/ets/m_customer/list"><span class="material-icons-outlined">people</span>Customer Lists</a></div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">groups</span>Employees
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_employee/list" class="sub-item"><span class="material-icons-outlined">fact_check</span>Employee Lists</a>
+                        <a href="/ets/m_employee/register/list" class="sub-item"><span class="material-icons-outlined">person_add_alt</span>Employee Register</a>
+                    </div>
+                </div>
+                <div class="item"><a href="/m_logout"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+                {% endif %}
+
+                {% if m_user.occupation.name == "Technician Manager" %}
+                <div class="item"><a href="/ets/m_dashboard"><span class="material-icons-outlined">home</span>Dashboard</a></div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">groups</span>Technicians
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_technician/list" class="sub-item"><span class="material-icons-outlined">fact_check</span>Technician Lists</a>
+                        <a href="/ets/m_technician/register/list" class="sub-item"><span class="material-icons-outlined">person_add_alt</span>Technician Register</a>
+                    </div>
+                </div>
+                <div class="item"><a href="/ets/m_technician/review"><span class="material-icons-outlined">reviews</span>Technician Review</a></div>
+                <div class="item"><a href="/m_logout"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+                {% endif %}
+
+                {% if m_user.occupation.name == "Customer Manager" %}
+                <div class="item"><a href="/ets/m_dashboard"><span class="material-icons-outlined">home</span>Dashboard</a></div>
+                <div class="item"><a href="/ets/m_order/list"><span class="material-icons-outlined">list_alt</span>Orders</a></div>
+                <div class="item"><a href="/ets/m_customer/list"><span class="material-icons-outlined">people</span>Customer Lists</a></div>
+                <div class="item"><a href="/ets/m_customer/review"><span class="material-icons-outlined">reviews</span>Customer Review</a></div>
+                <div class="item"><a href="/m_logout"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+                {% endif %}
+
+                {% if m_user.occupation.name == "Servicer" %}
+                <div class="item"><a href="/ets/m_dashboard"><span class="material-icons-outlined">home</span>Dashboard</a></div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">category</span>Categories
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_service/category" class="sub-item"><span class="material-icons-outlined">category</span>Services Category</a>
+                        <a href="/ets/m_technician/occupation" class="sub-item"><span class="material-icons-outlined">category</span>Technician Ocp</a>
+                    </div>
+                </div>
+                <div class="item-dropdown" ><a class="sub-btn"><span class="material-icons-outlined">home_repair_service</span>Services
+                    <!-- dropdown -->
+                    <!-- dropdown arrow-->
+                    <i class="fas fa-angle-right dropdown"></i>
+                    </a>
+                    <div class="sub-menu">
+                        <a href="/ets/m_service/add" class="sub-item"><span class="material-icons-outlined">note_add</span>Services Add</a>
+                        <a href="/ets/m_service/list" class="sub-item"><span class="material-icons-outlined">description</span>Service Lists</a>
+                    </div>
+                </div>
+                <div class="item"><a href="/m_logout"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

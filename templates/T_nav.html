@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- nav -->
+    <nav class="c_home_nav">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="nav-name">
+            <h2>Technicians</h2>
+        </div>
+        <ul class="nav-items">
+            <li><a href="/ets/t_home/" class="active">Home</a></li>
+            <li><a href="/ets/t_order/list/{{t_user.email}}">Order Lists</a></li>
+            <li><a href="/ets/t_technician">Technicians</a></li>
+            <li><a href="/ets/t_review/create">Review</a></li>
+            <li>
+                <div class="drop-down">
+                    <a href="#">Account</a>
+                    <div class="drop-down-content">
+                        {% if t_user.image %}
+                        <img src="{{t_user.image.url}}" alt="" />
+                        {% endif %}
+                        <h2>{{ t_user.full_name }}</h2>
+                        <h3>{{ t_user.email }}</h3>
+                        <div class="btn">
+                            <a href="/ets/t_profile/edit/{{t_user.id}}"><button class="child1" onclick="showPopup()">Edit</button></a>
+                            <a href="/t_logout/"><button class="child2">Logout</button></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- nav end -->
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var links = document.querySelectorAll('.nav-items li a');
+
+            // Retrieve active link index or URL from local storage
+            var activeLinkIndex = localStorage.getItem("activeLinkIndex");
+            if (activeLinkIndex !== null) {
+                // Remove active class from all links
+                links.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                // Add active class to the link
+                links[activeLinkIndex].classList.add('active');
+            }
+
+            links.forEach(function (link, index) {
+                link.addEventListener('click', function (event) {
+                    // Set active link index to local storage
+                    localStorage.setItem("activeLinkIndex", index);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

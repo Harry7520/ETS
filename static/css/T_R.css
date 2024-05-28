@@ -1,0 +1,159 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    /* background:linear-gradient(135deg,purple,rgb(101, 9, 193)); */
+    background:url("/static/images/p1.jpg/") no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    position:relative;
+    max-width:900px;
+    width:100%;
+    /* background:#fff; */
+    background:transparent;
+    backdrop-filter: blur(20px);
+    padding:30px;
+    margin:0 15px;
+    border-radius:6px;
+    box-shadow:0.5rem 1rem 1.5rem 2rem rgba(0,0,0,0.5)
+}
+
+.container header{
+    font-size:30px;
+    font-weight:bolder;
+    color:#333;
+}
+
+.container > form{
+    position:relative;
+    min-height: 490px;
+    margin-top: 16px;
+    background:transparent;
+}
+
+.container > form > .detail{
+    margin-top:10px;
+}
+
+.container > form > .detail > .field{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.container > form > .detail > .field1{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+}
+
+.container > form > .detail > .field2{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    margin-top:10px;
+}
+
+.container > form > .detail > .field > .input-field,.container > form > .detail > .field1 > .input-field{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% / 3 - 5px);
+    margin:4px 0;
+}
+
+.container > form > .detail > .field1 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}
+
+.container > form > .detail > .field2 > .input-field1{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:4px 0;
+}
+
+.input-field > label,.input-field1 > label,.field2 >.input-field > label{
+    font-size:20px;
+    font-weight:bold;
+    color:#2e2e2e;
+}
+
+.input-field > input{
+    padding:0 15px;
+    outline:none;
+    border:1px solid #aaa;
+    border-radius:5px;
+    color:#333;
+    font-size:14px;
+    font-weight:400;
+    height:42px;
+    margin:8px 0;
+}
+
+.input-field1 > textarea{
+    padding:10px 15px;
+    outline:none;
+    border:1px solid #aaa;
+    border-radius:5px;
+    color:#333;
+    font-size:14px;
+    font-weight:400;
+    height:5rem;
+    margin:8px 0;
+    resize:none;
+}
+
+.select-field > select{
+    font-size:15px;
+    padding:0 15px 0 7.5px;
+    margin-top:0.5rem;
+}
+
+.select-field{
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    margin:4px 3rem 4px 0;
+}
+
+.select-field >label{
+    font-size:20px;
+    font-weight:bold;
+    color:#2e2e2e;
+}
+
+.btn-box{
+    display:flex;
+    justify-content:center;
+    margin-top:1rem;
+}
+
+.btn{
+    width:15rem;
+    height:3rem;
+    color:white;
+    background:black;
+    border-radius:1rem;
+    border:1px solid black;
+    transition:0.5s;
+}
+
+.btn:hover{
+    transform:scale(1.2);
+    background:purple;
+    box-shadow:0.4rem 0.4rem 0.5rem 0.5rem rgba(0,0,0,0.5);
+}

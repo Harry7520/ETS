@@ -1,0 +1,57 @@
+{% extends "M_base.html" %}
+
+{% block title %} Service Edit {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="box">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="title">
+                    <h2>Service Edit</h2>
+                </div>
+                <div class="input-box">
+                    <label>Name</label>
+                    <input type="text" value="{{service.name}}" name="name">
+                </div>
+                <div class="input-box">
+                    <label>Price</label>
+                    <input type="text-area" value="{{service.price}}" name="price">
+                </div>
+                <div id="select-box">
+                    <div class="select-box">
+                        <select name="category" >
+                            {% for c in category %}
+                                <option {% if service.category_id == c.id %}selected{% endif %} value="{{c.id}}">{{c.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    </div>
+                <div class="input-box">
+                    {% if service.image %}
+                    <p>File uploaded at: <a href="{{service.image.url}}">{{service.image}}</a></p>
+                    {% endif %}
+                    {% if service.image %}
+                    <img src={{service.image.url}} style="width:100px;height:100px;" />
+                    {% endif %}<br><br>
+                    <input type="file" name="image">
+                </div>
+                <div class="input-box">
+                    <textarea name="description">{{service.description}}</textarea>
+                </div>
+                <div class="but">
+                    <button type="submit" class="btn">Update</button>
+                </div>
+            </form>
+            <div class="but">
+                <a href="/ets/m_service/list"><button class="btn">Cancel</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

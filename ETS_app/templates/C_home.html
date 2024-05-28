@@ -1,0 +1,86 @@
+{% extends "C_base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/OTP&FP.css' %}" />
+
+<div class="main-container">
+    <center>
+        <!-- message -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} ">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <center>
+                <div classs="alert-text">{{ message }}</div>
+            </center>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </center>
+    <!-- message end -->
+    <div class="home">
+        <div class="home-header">
+            <img src="{% static 'images/logo.jpg' %}" alt=""/>
+            <h1>Electrical Technician Services</h1>
+        </div>
+        <div class="title">
+            <h2>About</h2>
+        </div>
+        <div class="home-about">
+            <img src="{% static 'images/about.jpg' %}" alt=""/>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar, justo a facilisis lacinia, purus felis imperdiet leo, vitae convallis leo ligula et massa. Aliquam tellus sapien, gravida non odio id, sodales vehicula lacus. Nullam dictum sem a orci lacinia, non elementum augue mattis. Proin aliquet purus finibus mauris semper fermentum. Maecenas lorem leo, mollis a arcu tincidunt, semper luctus metus. Sed aliquam ac lorem in luctus. Duis turpis nulla, venenatis vitae feugiat eget, pretium sit amet nibh. Nam ultrices dolor ex, eu mollis nunc pulvinar at. Pellentesque euismod tellus non sollicitudin vulputate. Curabitur dapibus a est sit amet maximus. Nunc nec lectus orci. Maecenas euismod sem massa, eu varius ante hendrerit ac. Nulla at metus tortor. Phasellus erat libero, finibus at feugiat non, laoreet condimentum nulla.
+            </p>
+        </div><hr/>
+        <div class="home-sponsor">
+            <div class="title">
+                <h2>Sponsors</h2>
+            </div>
+            <div class="img-box">
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor1.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor2.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor3.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor4.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor5.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+                <div class="img-card">
+                    <img src="{% static 'images/sponsor6.jpg' %}" alt="">
+                    <h3>HMA</h3>
+                </div>
+            </div>
+        </div><hr/>
+        <div class="home-contacts">
+            <div class="title">
+                <h2>Contacts</h2>
+            </div>
+            <p>facebook : sdfjsdfjk</p>
+            <p>email : dsfsdf@gmail.com</p>
+            <p>phone : 02855441</p>
+            <p>webside : <a>hello</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,389 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'nav'
+      'main';
+  }
+
+  .main-container {
+    grid-area: main;
+    overflow-y: auto;
+  }
+
+/* nav style */
+
+.c_home_nav{
+    grid-area: nav;
+    width:100%;
+    height:3rem;
+    background-color:skyblue;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.c_home_nav > ul{
+    list-style:none;
+}
+
+.c_home_nav > ul > li{
+    display:inline-block;
+    border:0 1px solid black;
+}
+
+.c_home_nav > ul > li > a,.c_home_nav > ul > li > .drop-down > a{
+    text-transform:uppercase; 
+    font-size:17px;
+    padding:1rem 2rem;
+    color:darkblue;
+    text-decoration:none;
+}
+
+.c_home_nav > ul > li > a:hover,.c_home_nav > ul > li > .drop-down > a:hover{
+    background-color:greenyellow;
+    transition: 1s;
+}
+
+.nav-name{
+    padding:0 2rem;
+}
+
+.nav-name > h2{
+    color:darkblue;
+}
+/* nav end */
+
+/* drop down */
+
+.drop-down{
+    position:relative;
+    display:inline-block;
+}
+
+.drop-down-content{
+    display:none;
+    position:absolute;
+    right:0;
+    top:2.1rem;
+    background-color:white;
+    width:20rem;
+    height:auto;
+    text-align:center;
+    border:0.3rem solid gray;
+    border-radius:1rem;
+    background-color:skyblue;
+}
+
+.drop-down-content > img{
+    width:10rem;
+    height:10rem;
+    border-radius:100%;
+    border:0.5rem solid black;
+    margin-top:2rem;
+}
+
+.drop-down-content > h2,.drop-down-content >h3 {
+    font-weight:bold;
+    font-family:Arial;
+    margin:1rem 0 1rem 0;
+}
+
+.drop-down-content > .btn > a > .child1{
+    text-decoration:none;
+    cursor:pointer;
+    width:5rem;
+    height:2.5rem;
+    font-weight:bold;
+    background-color:green;
+    color:white;
+}
+
+.drop-down-content > .btn > a > .child2{
+    text-decoration:none;
+    cursor:pointer;
+    width:5rem;
+    font-weight:bold;
+    height:2.5rem;
+    background-color:orange;
+    color:white;
+}
+
+.drop-down-content > a > .child3{
+    text-decoration:none;
+    cursor:pointer;
+    width:10rem;
+    font-weight:bold;
+    height:2.5rem;
+    background-color:red;
+    color:white;
+    margin-bottom:2rem;
+}
+
+.drop-down-content > .btn {
+    display:flex;
+    justify-content: space-around;
+    margin-bottom:2rem;
+}
+
+.drop-down-content > a > .child3:hover{
+    background-color:rgb(255, 111, 0);
+}
+
+.drop-down-content > .btn > a > .child1:hover {
+    background-color:blue;
+}
+
+.drop-down-content > .btn > a > .child2:hover {
+    background-color:yellow;
+}
+
+.drop-down:hover .drop-down-content{
+    display:inherit;
+}
+/* drop-down end */
+
+/* sidebar and nav responsive */
+
+#sidebar {
+    grid-area: sidebar;
+    height: 100%;
+    background-color: skyblue;
+    overflow-y: auto;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    display:none;
+}
+
+.sidebar-title {
+    margin-left:222px;
+    cursor:pointer;
+}
+
+.profile{
+    margin-top:30px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.profile img{
+    display:block;
+    width: 100px;
+    height:100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border:5px solid black;
+}
+
+.profile h3{
+    color: darkblue;
+    margin:10px 0 5px;
+}
+
+.profile p{
+    color:darkblue;
+    font-size:14px;
+}
+
+#sidebar .menu{
+    width: 100%;
+    margin-top: 30px;
+   }
+   
+#sidebar .menu .item{
+    position: relative;
+    cursor: pointer;
+}
+
+#sidebar .menu .item a:hover{
+    background: #33363a;
+    transition: 0.3s ease;
+    color:white;
+}
+
+#sidebar .menu .item a{
+    color: darkblue;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    padding: 5px 30px;
+    line-height: 60px;
+}
+
+.item a{
+    color: #fff;
+    font-size:16px;
+    text-decoration:none;
+    display:block;
+    padding: 5px 30px;
+    line-height:60px
+}
+
+.item span{
+    margin-right:15px;
+}
+
+.sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+    /*
+      the z-index of the ApexCharts is 11
+      we want the z-index of the sidebar higher so that
+      the charts are not showing over the sidebar 
+      on small screens
+    */
+    z-index: 12 !important;
+  }
+
+.material-icons-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 35px;
+  }
+
+.menu-icon{
+    display:none;
+    cursor:pointer;
+}
+
+.sidebar-title > span{
+    color:white;
+}
+
+.nav-items li a.active {
+    background-color: greenyellow;
+    color:darkblue;
+}
+
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding-top: 50px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    width: 400px;
+    height: 350px;
+    border-radius:0.5rem;
+    max-width: 90%; /* Ensures the popup doesn't exceed 90% of the viewport width */
+    max-height: 90%; /* Ensures the popup doesn't exceed 90% of the viewport height */
+    overflow: auto; /* Enables scrolling if content exceeds the popup size */
+}
+
+/* Styles for the overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.box-size{
+    width:100%;
+    padding:25%;
+}
+
+.box{
+    background:skyblue;
+}
+
+.profile-box{
+    text-align:center;
+}
+
+.profile-box-input{
+    padding:10px 0 3rem 0;
+}
+
+.profile-btn{
+    margin-bottom:1rem;
+}
+
+.profile-btn > button{
+    padding:10px 50px;
+    cursor: pointer;
+    background:green;
+    color:#fff;
+}
+
+.profile-btn1 > a >button{
+    padding:10px 50px;
+    cursor: pointer;
+}
+
+.table-list-box-size >.box1{
+    margin:5rem auto 0 auto;
+    text-align:center;
+    padding:30px 40px;
+    width:50%;
+    background:#e2e2e2;
+    border-radius:0.5rem;
+}
+
+.table-list-box-size >.box2{
+    margin:5rem auto 0 auto;
+    padding:30px 40px;
+    width:50%;
+    background:#e2e2e2;
+    border-radius:0.5rem;
+}
+
+.table-list-box-size >.box1 > .detail{
+    display:flex;
+    justify-content:space-between;
+    padding:10px;
+}
+
+.table-list-box-size >.box1 > .detail >p{
+    font-size:medium;
+    font-weight:100;
+}
+
+.table-list-box-size >.box1 > .button > a > button{
+    outline:none;
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    padding:10px;
+    color:#fff;
+    background-color:#0298cf;
+}
+
+.table-list-box-size >.box1 > .button{
+    padding:10px;
+}
+/* nav responsive media */
+
+@media screen and (max-width: 1225px) {  
+    .menu-icon {
+      display: inline;
+    }
+
+    .nav-items{
+        display:none;
+    }
+
+    .nav-name{
+        padding:0 2rem 0 0;
+    }
+  }
+
+  @media screen and (min-width: 1225px) {  
+    .sidebar-responsive{
+        display:none !important;
+    }
+  }

@@ -1,0 +1,44 @@
+{% extends "M_base.html" %}
+
+{% block title %} Technician detail {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="box">
+            <div class="detail">
+                <label>Name</label>
+                <p>{{review.name}}</p>
+            </div>
+            <div class="detail">
+                <label>Email</label>
+                <p>{{review.email}}</p>
+            </div>
+            <div class="detail">
+                <label>Phone</label>
+                <p>{{review.phone}}</p>
+            </div>
+            <div class="detail">
+                <label>Create_at</label>
+                <p>{{review.create_at}}</p>
+            </div>
+            <div class="detail">
+                <label>Message</label>
+            <p>{{review.message}}</p>
+            </div>
+            <div class="button">
+                {% if review.status == True %}
+                <a href="/ets/m_technician/review/"><button>Go Back</button></a>
+                {% elif review.status == False %}
+                <a href="/ets/m_customer/review/"><button>Go Back</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

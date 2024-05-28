@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard Login</title>
+        <link rel="stylesheet" href="{% static 'css/M_L.css' %}"/>
+        <!-- message.css -->
+        <link rel="stylesheet" href="{% static 'css/message.css' %}">
+        <!-- Google-icon link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+        <!-- remix icon link -->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"rel="stylesheet"/>
+    </head>
+    <body>
+        <center>
+            <div class="message">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} ">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <center><div classs="alert-text">{{ message }}</div></center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+        </center>
+        <div class="login">
+            <form method="POST" class="login-form">
+                {% csrf_token %}
+                <div class="login-title">
+                    <h1>Login</h1>
+                </div>
+                <div class="login-item">
+                    <div class="login-input">
+                        <input type="text" name="name" class="input" placeholder="Name or Email" required/>
+                    </div>
+                    <div class="login-input">
+                        <input type="password" name="password" class="input" placeholder="Password" id="login-password" required/>
+                        <i class="ri-eye-off-line login_eye" id="login-eye"></i>
+                    </div>
+                </div>
+                <div class="other">
+                    <div class="check">
+                        <input type="checkbox" class="check-input"/>
+                        <label for="" class="check-label">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot">Forgot Password?</a>
+                </div>
+                
+                <div class="btn-box">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </body>
+
+<!-- script -->
+<script type="text/javascript">
+    const showHiddenPass = (LoginPass, LoginEye) =>{
+        const input=document.getElementById(LoginPass),
+              iconEye =document.getElementById(LoginEye)
+
+        iconEye.addEventListener('click', () =>{
+            //change Password to text
+            if(input.type === 'password'){
+                //switch to text
+                input.type = 'text'
+
+                //icon change
+                iconEye.classList.add('ri-eye-line')
+                iconEye.classList.remove('ri-eye-off-line')
+            } else{
+                //change password
+                input.type = 'password'
+
+                //icon change
+                iconEye.classList.remove('ri-eye-line')
+                iconEye.classList.add('ri-eye-off-line')
+            }
+        })
+    }
+
+    showHiddenPass('login-password','login-eye')
+</script>
+
+</html>

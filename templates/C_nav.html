@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- nav -->
+    <nav class="c_home_nav">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="nav-name">
+            <h2>Technicians Services</h2>
+        </div>
+        <ul class="nav-items">
+            <li><a href="/ets/c_home/" class="active">Home</a></li>
+            <li><a href="/ets/c_service/category/view/">Services</a></li>
+            <li><a href="/ets/c_technician">Technicians</a></li>
+            <li><a href="/ets/c_order/list/{{c_user.email}}">Order Services</a></li>
+            <li><a href="/ets/c_review/create">Review</a></li>
+            <li>
+                <div class="drop-down">
+                    <a href="#">Account</a>
+                    <div class="drop-down-content">
+                        {% if c_user.image %}
+                        <img src="{{c_user.image.url}}" alt="" />
+                        {% else %}
+                        <img src="{% static 'images/C_profile.jpg'%}" alt="" />
+                        {% endif %}
+                        <h2>{{ c_user.name }}</h2>
+                        <h3>{{ c_user.email }}</h3>
+                        <div class="btn">
+                            <a href="/ets/c_profile/edit/{{c_user.id}}"><button class="child1" onclick="showPopup()">Edit</button></a>
+                            <a href="/c_logout/"><button class="child2">Logout</button></a>
+                        </div>
+                        {% if  c_user %}
+                        <a href="/ets/c_account/delete/{{c_user.email}}"><button class="child3">Delete</button></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- nav end -->
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var links = document.querySelectorAll('.nav-items li a');
+
+            // Retrieve active link index or URL from local storage
+            var activeLinkIndex = localStorage.getItem("activeLinkIndex");
+            if (activeLinkIndex !== null) {
+                // Remove active class from all links
+                links.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                // Add active class to the link
+                links[activeLinkIndex].classList.add('active');
+            }
+
+            links.forEach(function (link, index) {
+                link.addEventListener('click', function (event) {
+                    // Set active link index to local storage
+                    localStorage.setItem("activeLinkIndex", index);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

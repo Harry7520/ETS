@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+        
+		<div class="profile">
+            {% if t_user.image %}
+            <a href="/ets/t_profile/edit/{{t_user.id}}"><img src="{{t_user.image.url}}"></a>
+            {% endif %}
+            <h3>{{t_user.name}}</h3>
+            <p>{{t_user.email}}</p>
+        </div>
+
+        <div class="menu">
+            <div class="item"><a href="/ets/t_home/"><span class="material-icons-outlined">home</span>Home</a></div>
+            <div class="item"><a href="/ets/t_order/list/{{t_user.email}}"><span class="material-icons-outlined">list_alt</span>Order Lists</a></div>
+            <div class="item"><a href="/ets/t_technician"><span class="material-icons-outlined">group</span>Technicians</a></div>
+            <div class="item"><a href="/ets/t_review/create"><span class="material-icons-outlined">help_center</span>Review</a></div>
+            <div class="item"><a href="/t_logout/"><span class="material-icons-outlined">logout</span>Log Out</a></div>
+        </div>
+       </aside>
+      <!-- End Sidebar -->
+    </body>
+</html>

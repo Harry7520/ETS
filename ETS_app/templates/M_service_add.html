@@ -1,0 +1,53 @@
+{% extends "M_base.html" %}
+
+{% block title %}Services Add{% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="service-add-box">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="title">
+                    <h2>Services Add</h2>
+                </div>
+                <div class="service-input-box">
+                    <div class="service-input">
+                        <label>Name</label>
+                        <input type="text" name="name" required/>
+                    </div>
+                    <div class="service-input1">
+                        <label>Price</label>
+                        <input type="text" name="price" required/>
+                    </div>
+                    <div class="service-input">
+                        <label>Image</label>
+                        <input type="file" name="image"/>
+                    </div>
+                </div>
+                <div class="service-input2">
+                    <label>Service Category</label>
+                    <select name="category">
+                        {% for c in category%}
+                        <option value="{{c.id}}">
+                            {{c.name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="service-input3">
+                    <label>Description</label>
+                    <textarea name="description"></textarea>
+                </div>
+                <div class="btn-box">
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

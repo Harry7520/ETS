@@ -1,0 +1,48 @@
+{% extends "M_base.html" %}
+
+{% block title %} Service detail {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="box">
+            <div class="image">
+                {% if service.image %}
+                <img src="{{service.image.url}}" />
+                {% endif %}
+            </div>
+            <div class="detail">
+                <label>ID</label>
+                <p>{{service.id}}</p>
+            </div>
+            <div class="detail">
+                <label>Name</label>
+                <p>{{service.name}}</p>
+            </div>
+            <div class="detail">
+                <label>Price</label>
+                <p>{{service.price}}</p>
+            </div>
+            <div class="detail">
+                <label>Category</label>
+                <p>{{service.category.name}}</p>
+            </div>
+            <div class="detail">
+                <label>Description</label>
+                <p>{{service.description}}</p>
+            </div>
+            <div class="detail">
+                <label>Create Date</label>
+                <p>{{service.create_at}}</p>
+            </div>
+            <div class="button">
+                <a href="/ets/m_service/list"><button>Go Back</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

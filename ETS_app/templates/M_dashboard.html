@@ -1,0 +1,114 @@
+{% extends "M_base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block body %}
+
+{% load static %}
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<script src="{% static 'js/chart.js' %}"></script>
+
+<div class="main">
+    <div class="main-cards">
+        <div class="card">
+            <div class="card-inner">
+                <h3>Services</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{service.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Orders</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{order.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Customers</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{customer.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Report</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{review.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Technicians</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{technician.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Technician Registerations</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{t_reg.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Employees</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{main.count}}</h1>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <h3>Employee Registerations</h3>
+                <span class="material-icons-outlined">people</span>
+            </div>
+            <h1>{{m_reg.count}}</h1>
+        </div>
+        <div class="chart">
+            <div id="chartContainer"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    theme: "",
+    backgroundColor:"transparent",
+    animationEnabled: true,
+    data: [{
+        type: "pie",
+        indexLabelFontSize: 18,
+        indexLabelFontColor: "red",
+        radius: 150,
+        indexLabel: "{label} - {y}",
+        yValueFormatString: "###0",
+        click: explodePie,
+        dataPoints: [
+            { y:'{{service.count}}', label: "Services" },
+            { y: '{{order.count}}', label: "Orders" },
+            { y: '{{customer.count}}', label: "Customers" },
+            { y: '{{review.count}}', label: "Report" },
+            { y: '{{technician.count}}', label: "Technicians" },
+            { y: '{{main.count}}', label: "Employees" },
+            { y: '{{t_reg.count}}', label: "T-Reg" },
+            { y: '{{m_reg.count}}', label: "E-Reg" },
+        ]
+    }]
+});
+chart.render();
+
+function explodePie(e) {
+    for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+        if(i !== e.dataPointIndex)
+            e.dataSeries.dataPoints[i].exploded = false;
+    }
+}
+ 
+}
+</script>
+
+{% endblock %}

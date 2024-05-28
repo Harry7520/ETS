@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <!-- Title -->
+        <title>Login</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <!-- C_R&L.Css-->
+        <link rel="stylesheet" href="{% static 'css/C_R&L.css' %}">
+        <!-- message.css -->
+        <link rel="stylesheet" href="{% static 'css/message.css' %}">
+        <!-- Google-icon link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+        <!-- remix icon link -->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="area">
+<center>
+            <div class="message">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} ">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <center><div classs="alert-text">{{ message }}</div></center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                </center>
+<center>
+            <div class="login">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="login-title">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="hello1">
+                        <div class="login-content">
+                            <div class="login-box">
+                                <i class="ri-mail-line remix"></i>
+                                <div class="input-box">
+                                    <input type="text" class="input" placeholder=" " name="n_or_e" required/>
+                                    <label class="label">Username or Email</label>
+                                </div>
+                            </div>
+
+                            <div class="login-box">
+                                <i class="ri-lock-line remix"></i>
+                                <div class="input-box">
+                                    <input type="password" class="input" placeholder=" " id="login-password" name="password" required/>
+                                    <label class="label">Password</label>
+                                    <i class="ri-eye-off-line login_eye" id="login-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other">
+                            <div class="check">
+                                <input type="checkbox" class="check-input"/>
+                                <label for="" class="check-label">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn">Login</button>
+
+                        <p class="reg">
+                            Don't have an account? <a href="/c_register/">Register</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+    </center>
+        </div>
+    </body>
+
+<!-- script -->
+<script type="text/javascript">
+    const showHiddenPass = (LoginPass, LoginEye) =>{
+        const input=document.getElementById(LoginPass),
+              iconEye =document.getElementById(LoginEye)
+
+        iconEye.addEventListener('click', () =>{
+            //change Password to text
+            if(input.type === 'password'){
+                //switch to text
+                input.type = 'text'
+
+                //icon change
+                iconEye.classList.add('ri-eye-line')
+                iconEye.classList.remove('ri-eye-off-line')
+            } else{
+                //change password
+                input.type = 'password'
+
+                //icon change
+                iconEye.classList.remove('ri-eye-line')
+                iconEye.classList.add('ri-eye-off-line')
+            }
+        })
+    }
+
+    showHiddenPass('login-password','login-eye')
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+{% extends "M_base.html" %}
+
+{% block title %} Customer list {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="service-add-box">
+            <div class="service-table-header">
+                <p>Order Lists</p>
+                <form action="/ets/search_by7">
+                    <input type="search" name="search" placeholder="Status search" style="height:35px;width:200px;">
+                    <button class="add-new" type="submit">search</button>
+                </form>
+            </div>
+
+            <table class="service-table">
+                {% if order %}
+                <thead>
+                    <th>Service Name</th>
+                    <th>Technician Name</th>
+                    <th>Customer Name</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>t_Status</th>
+                    <th>Action</th>
+                </thead>
+                {% for i in order %}
+                <tbody>
+                    <tr>
+                        <td data-label="ID">{{i.service}}</td>
+                        <td data-label="Photo">{{i.t_name}}</td>
+                        <td data-label="Name">{{i.c_name}}</td>
+                        <td data-label="Email">{{i.price}}</td>
+                        {% if i.status == "approve" %}
+                        {% if i.f_status == "on-going" %}
+                        <td data-label="Status" style="background-color:#17a2b8;">On-going</td>
+                        {% elif i.f_status == "finish" %}
+                        <td data-label="Status" style="background-color: green;">Finished</td>
+                        {% endif %}
+                        {% else %}
+                        <td data-label="Status" style="background-color:#17a2b8;">Pending</td>
+                        {% endif %}
+                        
+                        {% if i.status == "pending" %}
+                        <td data-label="Status" style="background-color:#17a2b8;">Pending</td>
+                        {% elif i.status == "approve" %}
+                        <td data-label="Status" style="background-color:green;">Approve</td>
+                        {% elif i.status == "reject" %}
+                        <td data-label="Status" style="background-color:red;">Reject</td>
+                        {% endif %}
+
+                        </td>
+                        <td data-label="Action">
+                            <a href="/ets/m_order/detail/{{i.id}}"><button style="background-color:rgb(86, 168, 168)"><i
+                                        class="fa fa-eye"></i></button></a>
+                            {% if i.t_status == False %}
+                            {% if i.c_status == False %}
+                            <a href="/ets/m_order/delete/{{i.id}}" onclick="return confirm('Are you sure?');"><button
+                                    style="background-color:#f80000;"><i class="fa fa-trash-o"></i></button></a>
+                            {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+                {% else %}
+                <font align="center">
+                    <h3>Nothing to show!</h3>
+                </font>
+                {% endif %}
+            </table>
+            {% if order.has_other_pages %}
+            <div class="pagination-title">
+                <h3>{{ order }}</h3>
+            </div>
+            <div class="box1">
+                <div class="pagination">
+                    <ul>
+                        {% if order.has_previous %}
+                        <li class="btn prev"><a class="tag" href="?page={{ order.previous_page_number }}"><span><i
+                                        class="fa fa-angle-left">Previous</i></span></a></li>
+                        {% else %}
+                        <li class="btn prev disabled"><span><i class="fa fa-angle-left">Previous</i></span></li>
+                        {% endif %}
+                        {% if order.has_next %}
+                        <li class="btn next"><a class="tag" href="?page={{ order.next_page_number }}"><span>Next<i
+                                        class="fa fa-angle-right"></i></span></a></li>
+                        {% else %}
+                        <li class="btn next disabled"><span>Next<i class="fa fa-angle-right"></i></span></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

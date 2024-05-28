@@ -1,0 +1,73 @@
+{% extends "M_base.html" %}
+
+{% block title %} Customer list {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="service-add-box">
+            <div class="service-table-header">
+                <p>Technician Review</p>
+            </div>
+
+            <table class="service-table">
+                {% if review %}
+                <thead>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Create_at</th>
+                    <th>Action</th>
+                </thead>
+                {% for i in review %}
+                <tbody>
+                    <tr>
+                        <td data-label="Name">{{i.name}}</td>
+                        <td data-label="Email">{{i.email}}</td>
+                        <td data-label="Phone">{{i.phone}}</td>
+                        <td data-label="Create_at">{{i.create_at}}</td>
+                        <td data-label="Action">
+                            <a href="/ets/m_review/detail/{{i.id}}"><button style="background-color:rgb(86, 168, 168)" ><i class="fa fa-eye"></i></button></a>
+                            <a href="/ets/m_review/delete/{{i.id}}" onclick="return confirm('Are you sure?');"><button style="background-color:#f80000;"><i class="fa fa-trash-o"></i></button></a>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+                {% else %}
+                <font align="center">
+                    <h3>Nothing to show!</h3>
+                </font>
+                {% endif %}
+            </table>
+            {% if review.has_other_pages %}
+            <div class="pagination-title">
+                <h3>{{ review }}</h3>
+            </div>
+            <div class="box1">
+                <div class="pagination">
+                    <ul>
+                        {% if review.has_previous %}
+                        <li class="btn prev"><a class="tag" href="?page={{ review.previous_page_number }}"><span><i
+                                        class="fa fa-angle-left">Previous</i></span></a></li>
+                        {% else %}
+                        <li class="btn prev disabled"><span><i class="fa fa-angle-left">Previous</i></span></li>
+                        {% endif %}
+                        {% if review.has_next %}
+                        <li class="btn next"><a class="tag" href="?page={{ review.next_page_number }}"><span>Next<i
+                                        class="fa fa-angle-right"></i></span></a></li>
+                        {% else %}
+                        <li class="btn next disabled"><span>Next<i class="fa fa-angle-right"></i></span></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

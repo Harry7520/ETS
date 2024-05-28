@@ -1,0 +1,86 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(120deg,#2980b9,#8e44ad);
+    align-items:center;
+}
+
+.name{
+    text-align:center;
+    margin-top:5rem;
+}
+
+.name > h1{
+    font-family:'IBM Plex Sans';
+    font-size:50px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#49e9e9 42%,#c5e74c 50%,#13f191 55%);
+    background-clip: text;
+    color:transparent;
+}
+
+.role_card_list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    position:absolute;
+    top:30%;
+    left:10%;
+    right:10%;
+    gap:3rem;
+}
+
+.role_card_list > a > .role_card{
+    width:20rem;
+    height:15rem;
+    text-align:center;
+    align-items:center;
+    background:linear-gradient(135deg, #e0e045, #69d456);
+    border-radius:2rem;
+    transition:1s;
+    box-shadow:1.5rem 2.5rem 3rem 0.5rem rgba(0,0,0,0.5);
+}
+
+.role_card_list > a > .role_card > img{
+    width:9rem;
+    height:9rem;
+    margin:1rem;
+    border:0.3rem solid black;
+    border-radius:100%;
+}
+
+.role_card_list > a > .role_card > h2{
+    font-family:'Lucida Sans';
+    color:black;
+}
+
+.role_card_list > a{
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.role_card_list > a:hover{
+    transform:scale(1.1);
+}
+
+/* media */
+
+@media screen and (max-width:1315px){
+    .role_card_list{
+        top:20%;
+    }
+}
+
+@media screen and (max-width:871px){
+    .role_card_list{
+        top:10%;
+    }
+
+    .name{
+        margin-top:0.5rem;
+    }
+}

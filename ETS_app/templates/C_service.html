@@ -1,0 +1,34 @@
+{% extends "C_base.html" %}
+
+{% block title %} Services {% endblock %}
+
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/C_service.css' %} "/>
+
+<div class="main-container">
+<div class="service-card-list-box">
+    {% if service %}
+    <div class="service-card-list">
+        {% for i in service %}
+        <div class="service-card">
+            {% if i.image %}
+            <img src="{{i.image.url}}" alt=""/>
+            {% endif %}
+            <h2>{{ i.name }}</h2>
+            <h3>price : {{ i.price }}</h3><hr/>
+            <p>{{ i.description }}</p><hr/><br/><br/>
+            <a href="/ets/c_technician/select/{{i.id}}">Select Technician</a>
+        </div>
+        {% endfor %} 
+    </div>
+    {% else %}
+    <center>
+        <h1 style="color:black;">Nothing Services!</h1>
+    </center>
+    {% endif %}
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <!-- Title -->
+        <title>Login</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <!-- C_R&L.Css-->
+        <link rel="stylesheet" href="{% static 'css/C_R&L.css' %}">
+        <!-- message.css -->
+        <link rel="stylesheet" href="{% static 'css/message.css' %}">
+        <!-- Google-icon link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+        <!-- remix icon link -->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="area1">
+
+            <center>
+                <div class="message">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }} ">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                <center><div classs="alert-text">{{ message }}</div></center>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    </center>
+
+                    <center>
+            <div class="loginn">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="login-title">
+                        <h2>Register</h2>
+                    </div>
+                    <div class="hello1">
+                        <div class="login-content">
+                            <div class="login-box">
+                                <i class="ri-user-line remix"></i>
+                                <div class="input-box">
+                                    <input type="text" class="input" placeholder=" " name="name" required/>
+                                    <label class="label">Username</label>
+                                </div>
+                            </div>
+
+                            <div class="login-box">
+                                <i class="ri-mail-line remix"></i>
+                                <div class="input-box">
+                                    <input type="email" class="input" placeholder=" " name="email" required/>
+                                    <label class="label">Email</label>
+                                </div>
+                            </div>
+
+                            <div class="login-box">
+                                <i class="ri-lock-line remix"></i>
+                                <div class="input-box">
+                                    <input type="password" class="input" placeholder=" " name="password" required/>
+                                    <label class="label">Password</label>
+                                </div>
+                            </div>
+
+                            <div class="login-box">
+                                <i class="ri-shield-check-line remix"></i>
+                                <div class="input-box">
+                                    <input type="password" class="input" placeholder=" " name="confirm_password" required/>
+                                    <label class="label">Confirm-Password</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn">Register</button>
+
+                        <p class="reg">
+                            Have an account? <a href="/c_login/">Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            </center>
+        </div>
+    </body>
+</html>

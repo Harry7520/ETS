@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/M_dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/message.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div class="container">
+        {% include "M_nav.html" %}
+        {% include "M_sidebar.html" %}
+        {% block body %}{% endblock %}
+    </div>
+</body>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/mode.js' %}"></script>
+<script src="{% static 'js/dropdown.js' %}"></script>
+<script src="{% static 'js/click_bg.js' %}"></script>
+</html>

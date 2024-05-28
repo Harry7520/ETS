@@ -1,0 +1,94 @@
+{% extends "M_base.html" %}
+
+{% block title %} Service list {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="main">
+    <div class="service-add-box-size">
+        <div class="service-add-box">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} ">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <div classs="alert-text">{{ message }}</div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="service-table-header">
+                <p>Service Lists</p>
+                <form action="/ets/search_by">
+                    <input type="search" name="search" placeholder="Name or Category search" style="height:35px;width:200px;">
+                    <button class="add-new" type="submit">search</button>
+                </form>
+            </div>
+
+            <table class="service-table">
+                {% if service %}
+                <thead>
+                    <th>ID</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </thead>
+                {% for i in service %}
+                <tbody>
+                    <tr>
+                        <td data-label="ID">{{i.id}}</td>
+                        <td data-label="Photo">
+                            {% if i.image %}
+                            <img src={{i.image.url}} style="height: 60px;width: 60px;border-radius: 15px;border: 5px solid #ced0d2;" />
+                            {% endif %}
+                        </td>
+                        <td data-label="Name">{{i.name}}</td>
+                        <td data-label="Price">{{i.price}}</td>
+                        <td data-label="Category">{{i.category.name}}</td>
+
+                        <td data-label="Action">
+                            <a href="/ets/m_service/detail/{{i.id}}"><button style="background-color:rgb(86, 168, 168)" ><i class="fa fa-eye"></i></button></a>
+                            <a href="/ets/m_service/edit/{{i.id}}"><button style="background-color:#0298cf;"><i class="fa fa-edit"></i></button></a>
+                            <a href="/ets/m_service/delete/{{i.id}}" onclick="return confirm('Are you sure?');"><button style="background-color:#f80000;"><i class="fa fa-trash-o"></i></button></a>
+                        </td>
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+                {% else %}
+                <font align="center">
+                    <h3>Nothing to show!</h3>
+                </font>
+                {% endif %}
+            </table>
+            {% if service.has_other_pages %}
+            <div class="pagination-title">
+                <h3>{{ service }}</h3>
+            </div>
+            <div class="box1">
+                <div class="pagination">
+                    <ul>
+                        {% if service.has_previous %}
+                        <li class="btn prev"><a class="tag" href="?page={{ service.previous_page_number }}"><span><i
+                                        class="fa fa-angle-left">Previous</i></span></a></li>
+                        {% else %}
+                        <li class="btn prev disabled"><span><i class="fa fa-angle-left">Previous</i></span></li>
+                        {% endif %}
+                        {% if service.has_next %}
+                        <li class="btn next"><a class="tag" href="?page={{ service.next_page_number }}"><span>Next<i
+                                        class="fa fa-angle-right"></i></span></a></li>
+                        {% else %}
+                        <li class="btn next disabled"><span>Next<i class="fa fa-angle-right"></i></span></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

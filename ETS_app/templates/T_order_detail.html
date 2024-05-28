@@ -1,0 +1,65 @@
+{% extends "T_base.html" %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/C_table.css' %}" />
+
+<div class="main-container">
+    <div class="table-list-box-size">
+        <div class="box1">
+            <div class="detail">
+                <label>Service Name</label>
+                <p>{{order.service}}</p>
+            </div>
+            <div class="detail">
+                <label>Price</label>
+                <p>{{order.price}}</p>
+            </div>
+            <div class="detail">
+                <label>Technician Name</label>
+                <p>{{order.t_name}}</p>
+            </div>
+            <div class="detail">
+                <label>Technician Email</label>
+                <p>{{order.t_email}}</p>
+            </div>
+            <div class="detail">
+                <label>Technician Phone</label>
+                <p>{{order.t_phone}}</p>
+            </div>
+            <div class="detail">
+                <label>Your Name</label>
+                <p>{{order.c_name}}</p>
+            </div>
+            <div class="detail">
+                <label>Your Email</label>
+                <p>{{order.c_email}}</p>
+            </div>
+            <div class="detail">
+                <label>Your Phone</label>
+                <p>{{order.c_phone}}</p>
+            </div>
+            <div class="detail">
+                <label>Your Address</label>
+                <p>{{order.c_address}}</p>
+            </div>
+            <div class="detail">
+                <label>Order Date</label>
+                <p>{{order.order_date}}</p>
+            </div>
+            <div class="detail">
+                <label>Create Date</label>
+                <p>{{order.create_at}}</p>
+            </div>
+            <div class="button">
+                <a href="/ets/t_order/list/{{t_user.email}}"><button>Go Back</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
